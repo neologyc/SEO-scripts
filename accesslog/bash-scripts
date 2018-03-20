@@ -8,19 +8,19 @@ find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -E "seznambot|googl
 find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -E "seznambot|googlebot|bingbot" -i | grep -e "GET " | grep -E " 301 | 302 " > presmerovani-3xx.csv
 
 # hodně znaků "/" v URL
-find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -e "GET " | grep -E "seznambot|googlebot|bingbot" -i | grep -e "GET " | grep -E "GET (/.*){5,} HTTP"
+find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -e "GET " | grep -E "seznambot|googlebot|bingbot" -i | grep -e "GET " | grep -E "GET (/.*){5,} HTTP" > hodne-lomitek.csv
 
 # hodně znaků "&" v URL
-find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -e "GET " | grep -E "seznambot|googlebot|bingbot" -i | grep -e "GET " | grep -E "GET .*(&.*){3,} HTTP"
+find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -e "GET " | grep -E "seznambot|googlebot|bingbot" -i | grep -e "GET " | grep -E "GET .*(&.*){3,} HTTP" > hodne-ampersandu.csv
 
 # stránkování s číslem stránky nad 99 s parametrem page= v URL
 # Obvykle ukazuje na neošetřené nekonečné stránkování
 # "page=" nahraďte za název parametru stránkování, jaký používáte v URL
 
-find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -E "seznambot|googlebot|bingbot" -i | grep -e "GET " | grep -E "GET .*page=[0-9]{3,}.* HTTP"
+find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -E "seznambot|googlebot|bingbot" -i | grep -e "GET " | grep -E "GET .*page=[0-9]{3,}.* HTTP" > vysoke-strankovani-qs.csv
 
 # stránkování s číslem stránky nad 99 s /2/, /3/, /4/, atd v URL
-find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -E "seznambot|googlebot|bingbot" -i | grep -e "GET " | grep -E "GET .*/[0-9]{3,}/? HTTP"
+find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -E "seznambot|googlebot|bingbot" -i | grep -e "GET " | grep -E "GET .*/[0-9]{3,}/? HTTP" > vysoke-strankovani-path.csv
 
 # seznam unikátních URL, které procházely vyhledávače Google, Seznam a bingbot podle abecedy
-find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -e "GET " | grep -E "seznambot|googlebot|bingbot" -i | cut -d " " -f 7 | sort -u | sort > unikatniURLSerazeneAbecedne.csv
+find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -e "GET " | grep -E "seznambot|googlebot|bingbot" -i | cut -d " " -f 7 | sort -u | sort > unikatni-url-serazene-abecedne.csv
