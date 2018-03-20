@@ -1,0 +1,5 @@
+# 1. Register at https://reporter.seznam.cz/wm/web/prehled
+# 2. Add and verify your website - https://reporter.seznam.cz/wm/weby
+# 3. Get your API key at https://reporter.seznam.cz/wm/web/api-klic
+# 4. Run the script in bash
+curl "https://reporter.seznam.cz/wm-api/web/document/reindex?key=99c0393ab15ed0044a1702c6fc5c81e69e7db395&url=https%3A%2F%2Fwww.prozeny.cz" -X POST --retry 5
