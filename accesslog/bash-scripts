@@ -10,6 +10,9 @@ find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -E "seznambot|googl
 # hodně znaků "/" v URL
 find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -e "GET " | grep -E "seznambot|googlebot|bingbot" -i | grep -E "GET (/.*){5,} HTTP" > hodne-lomitek.csv
 
+# více znaků "/" za sebou v URL
+find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -e "GET " | grep -E "seznambot|googlebot|bingbot" -i | grep -E "GET (/){2,} HTTP" > vice-lomitek-za-sebou.csv
+
 # hodně znaků "&" v URL
 find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -e "GET " | grep -E "seznambot|googlebot|bingbot" -i | grep -E "GET .*(&.*){3,} HTTP" > hodne-ampersandu.csv
 
