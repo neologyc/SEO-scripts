@@ -24,3 +24,4 @@ find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -E "seznambot|googl
 
 # seznam unikátních URL, které procházely vyhledávače Google, Seznam a bingbot podle abecedy
 find ./slozka-s-logy -name "*gz*" -print | xargs zcat | grep -e "GET " | grep -E "seznambot|googlebot|bingbot" -i | cut -d " " -f 7 | sort -u | sort > unikatni-url-serazene-abecedne.csv
+  
