@@ -1,0 +1,5 @@
+# cut by a space character and sort
+cut -d " " -f 1 | sort | uniq -c | sort -k1 -n -r > soubor
+
+# cut by a " character
+cut -d "\"" -f 2
