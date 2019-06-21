@@ -1,0 +1,11 @@
+for i in {1..35}
+do
+	# curl stazeni vsech ID podle parametru ve for 
+   	curl https://mapy.dev.dszn.cz/sitemap/sitemap-osm-pois-booking$i.xml 2> /dev/null |  
+   	# prida praydne radky - nektere sitemapy jsou v jednom radku a tohle ten jeden radek rozpadne, at pak dobre funguje grep
+   	sed -e $'s/<url/\\\n<url/g' |
+   	# vygrepuju jen URL
+   	grep -Po '(?<=<loc>).*(?=</loc>)' >> 
+   	# posilam do nejake URL
+   	mapydevurls;
+done
