@@ -8,7 +8,5 @@ do
    	# prida praydne radky - nektere sitemapy jsou v jednom radku a tohle ten jeden radek rozpadne, at pak dobre funguje grep
    	sed -e $'s/<url/\\\n<url/g' |
    	# vygrepuju jen URL
-   	grep -Po '(?<=<loc>).*(?=</loc>)' >> 
-   	# posilam do nejake URL
-   	mapydevurls;
+   	grep -Po '(?<=<loc>).*(?=</loc>)' >> mapydevurls; # posilam do nejake URL	
 done
